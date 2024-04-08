@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 player = pygame.Rect((300, 250, 50, 50))
 
-text_font = pygame.font.SysFont("Arial", 30)
+text_font = pygame.font.SysFont("Arial", 50)
 
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)

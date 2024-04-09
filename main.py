@@ -15,15 +15,37 @@ def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y))
 
+
+black = (0, 0, 0)
+blue = (0, 0, 255)
+
+block_width = 50
+block_height = 20
+
+block_x = (SCREEN_WIDTH - block_width) / 2
+block_y = 0
+
+block_speed = 1
+
+clock = pygame.time.Clock()
+
 run = True
 
 while run:
 
     screen.fill((0, 0, 0))
 
-    draw_text("Hello World", text_font, (120, 0, 0), 220, 150)
+    draw_text("Hello World", text_font, (120, 0, 0), 20, 530)
 
     pygame.draw.rect(screen, (255, 0, 0), player)
+
+    block_y += block_speed
+    if block_y > SCREEN_HEIGHT:
+        block_y = -block_height
+
+    pygame.draw.rect(screen, blue, [block_x, block_y, block_width, block_height])
+
+    clock.tick(60)
 
     key = pygame.key.get_pressed()
     if key[pygame.K_a] == True:
@@ -38,6 +60,8 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+
+
 
     pygame.display.update()
 
